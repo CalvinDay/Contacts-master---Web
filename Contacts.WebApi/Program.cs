@@ -2,6 +2,8 @@ using Contacts.WebApi;
 using Contacts.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
+using System.Runtime.InteropServices;
 
 void MapProperties(object source, object destination)
 {
@@ -18,6 +20,7 @@ void MapProperties(object source, object destination)
     if (destinationProperty != null && destinationProperty.CanWrite)
     {
       var value = sourceProperty.GetValue(source);
+      
       destinationProperty.SetValue(destination, value);
     }
   }
@@ -27,8 +30,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionSQLight")));
-//builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionHome")));
-builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionWork")));
+builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionHome")));
+//builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionWork")));
 
 var app = builder.Build();
 
@@ -53,7 +56,10 @@ app.MapGet("/api/blinds/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/blinds", async (Blind blind, ApplicationDbContext db) =>
 {
+  blind.BlindId = 0;
+
   db.Blinds.Add(blind);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/blinds/{id}", async (int id, Blind blind, ApplicationDbContext db) =>
@@ -102,7 +108,10 @@ app.MapGet("/api/payouts/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/payouts", async (Payout payout, ApplicationDbContext db) =>
 {
+  payout.PayoutId = 0;
+
   db.Payouts.Add(payout);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/payouts/{id}", async (int id, Payout payout, ApplicationDbContext db) =>
@@ -151,7 +160,10 @@ app.MapGet("/api/tables/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/tables", async (Table table, ApplicationDbContext db) =>
 {
+  table.TableId = 0;
+
   db.Tables.Add(table);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/tables/{id}", async (int id, Table table, ApplicationDbContext db) =>
@@ -205,7 +217,10 @@ app.MapGet("/api/players/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/players", async (Player player, ApplicationDbContext db) =>
 {
+  player.PlayerId = 0;
+
   db.Players.Add(player);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/players/{id}", async (int id, Player player, ApplicationDbContext db) =>
@@ -255,7 +270,10 @@ app.MapGet("/api/games/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/games", async (Game game, ApplicationDbContext db) =>
 {
+  game.GameId = 0;
+
   db.Games.Add(game);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/games/{id}", async (int id, Game game, ApplicationDbContext db) =>
@@ -266,6 +284,9 @@ app.MapPut("/api/games/{id}", async (int id, Game game, ApplicationDbContext db)
     return Results.NotFound();
 
   MapProperties(game, gameToUpdate);
+
+  // Set the state to Modified explicitly
+  db.Entry(gameToUpdate).State = EntityState.Modified;
 
   await db.SaveChangesAsync();
 
@@ -309,7 +330,10 @@ app.MapGet("/api/contacts/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/contacts", async (Contact contact, ApplicationDbContext db) =>
 {
+  contact.ContactId = 0;
+
   db.Contacts.Add(contact);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/contacts/{id}", async (int id, Contact contact, ApplicationDbContext db) =>
@@ -355,7 +379,10 @@ app.MapGet("/api/chipsets/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/chipsets", async (Chipset chipset, ApplicationDbContext db) =>
 {
+  chipset.ChipsetId = 0;
+
   db.Chipsets.Add(chipset);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/chipsets/{id}", async (int id, Chipset chipset, ApplicationDbContext db) =>
@@ -405,7 +432,10 @@ app.MapGet("/api/chips/{id}", async (int id, ApplicationDbContext db) =>
 });
 app.MapPost("/api/chips", async (Chip chip, ApplicationDbContext db) =>
 {
+  chip.ChipId = 0;
+
   db.Chips.Add(chip);
+
   await db.SaveChangesAsync();
 });
 app.MapPut("/api/chips/{id}", async (int id, Chip chip, ApplicationDbContext db) =>
