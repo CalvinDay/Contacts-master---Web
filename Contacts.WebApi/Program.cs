@@ -28,8 +28,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionSQLight")));
-builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionHome")));
-//builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionWork")));
+//builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionHome")));
+builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionWork")));
 
 var app = builder.Build();
 
