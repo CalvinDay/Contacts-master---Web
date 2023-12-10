@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R0zUx3i9UR/pRyQqnnuXVgiOXSzwpXTvkGg0v96/KaaJ5DWSkwPgr7EdR3zD+mlMvvezVse0w8bRVsS9kXQnQQ==",
+  "dgSpecHash": "ZmxbASf0EyYFyG8sqK6ATgB3myNGoE0x90znOEL17jE5k+cUFzI28HZt/n9VHM3L+hgfc1E6j7EG9pLFghpitQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\calvi\\Documents\\Contacts-master---Web\\Contacts.WebApi\\Contacts.WebApi.csproj",
+  "projectFilePath": "C:\\Users\\calvi\\Documents\\Contacts-master---web\\Contacts.WebApi\\Contacts.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\calvi\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\calvi\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
