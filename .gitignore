@@ -146,3 +146,7 @@ $RECYCLE.BIN/
 /.vs/ProjectEvaluation/contacts.metadata.v7.bin
 /.vs/ProjectEvaluation/contacts.projects.v7.bin
 /.vs/VSWorkspaceState.json
+/Contacts.WebApi/appsettings.Development.json
+/.vs/Contacts/FileContentIndex/04efc558-373e-423c-862e-35498268f998.vsidx
+/Contacts.WebApi/bin/Debug/net7.0/appsettings.Development.json
+/.gitignore
