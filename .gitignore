@@ -140,3 +140,9 @@ $RECYCLE.BIN/
 
 # JetBrains Rider
 .idea/
+/.vs/Contacts/DesignTimeBuild/.dtbcache.v2
+/.vs/Contacts/FileContentIndex/f02a50c5-6e7f-4d15-811d-04970ca65788.vsidx
+/.vs/Contacts/v17/.futdcache.v2
+/.vs/ProjectEvaluation/contacts.metadata.v7.bin
+/.vs/ProjectEvaluation/contacts.projects.v7.bin
+/.vs/VSWorkspaceState.json
